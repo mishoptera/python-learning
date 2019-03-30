@@ -25,7 +25,7 @@ def main():
   if len(sys.argv) >= 2:
     name = sys.argv[1]
   else:
-    name = 'Moana'
+    name = 'Moana, Orson, and Ameline'
   print 'Aloha', name
 
 # This is the standard boilerplate that calls the main() function.
