@@ -44,27 +44,20 @@ import sys
 # You could write a helper utility function that reads a file
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
-def help_print_words():
-    return
-
 def print_words(filename):
+filename = "basic/small.txt"
 word_dict = {}
-filename = 'basic/small.txt'
 f = open(filename, 'r')
 for line in f:   ## iterates over the words of the file
     words_in_line = line.split()
     for word in words_in_line:
         word = word.lower()
-        print word
         if word in word_dict:
             word_dict[word] += 1
-            print word_dict[word]
         else:
             word_dict[word] = 1
-            print word_dict[word]
-
-for key in sorted(dict.keys()):
-    print key, dict[key]
+for key in sorted(word_dict.keys()):
+    print key, word_dict[key]
 
 
 def help_print_top():
