@@ -44,6 +44,30 @@ import sys
 # You could write a helper utility function that reads a file
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
+def help_print_words():
+    return
+
+def print_words(filename):
+filename = 'basic/small.txt'
+f = open(filename, 'r')
+print f
+
+# read each word
+# check if word already exists as a key in dict
+# if no, create the word as a new key and set the dict value to 1
+# if yes, plus 1 to the dict value
+
+
+
+    for key in sorted(dict.keys()):
+        print key, dict[key]
+    return
+
+def help_print_top():
+    return
+
+def print_top():
+    return
 
 ###
 
