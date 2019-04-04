@@ -48,20 +48,24 @@ def help_print_words():
     return
 
 def print_words(filename):
+word_dict = {}
 filename = 'basic/small.txt'
 f = open(filename, 'r')
-print f
+for line in f:   ## iterates over the words of the file
+    words_in_line = line.split()
+    for word in words_in_line:
+        word = word.lower()
+        print word
+        if word in word_dict:
+            word_dict[word] += 1
+            print word_dict[word]
+        else:
+            word_dict[word] = 1
+            print word_dict[word]
 
-# read each word
-# check if word already exists as a key in dict
-# if no, create the word as a new key and set the dict value to 1
-# if yes, plus 1 to the dict value
+for key in sorted(dict.keys()):
+    print key, dict[key]
 
-
-
-    for key in sorted(dict.keys()):
-        print key, dict[key]
-    return
 
 def help_print_top():
     return
