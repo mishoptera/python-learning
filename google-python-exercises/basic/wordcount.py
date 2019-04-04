@@ -39,11 +39,13 @@ print_words() and print_top().
 
 import sys
 
+
 # +++your code here+++
 # Define print_words(filename) and print_top(filename) functions.
 # You could write a helper utility function that reads a file
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
+import operator
 def create_dict(filename):
     word_dict = {}
     f = open(filename, 'r')
@@ -58,15 +60,19 @@ def create_dict(filename):
 
     return word_dict
 
-#def print_words(filename):
-filename = "basic/small.txt"
-word_dict = create_dict (filename)
-for key in sorted(word_dict.keys()):
-    print key, word_dict[key]
+def print_words(filename):
+    filename = "basic/small.txt"
+    word_dict = create_dict(filename)
+    for key in sorted(word_dict.keys()):
+        print "{} {}".format(key, word_dict[key])
 
 
 def print_top():
-    return
+    word_dict = create_dict(filename)
+    sorted_word_dict = sorted(word_dict.items(), key = operator.itemgetter(1), reverse = True)
+    for word, count in sorted_word_dict[0:20]:  # limits to top 20
+        print word, count
+
 
 ###
 
