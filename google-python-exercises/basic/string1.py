@@ -30,7 +30,6 @@ def donuts(count):
         return "Number of donuts: " + str(count)
 
 
-
 # B. both_ends
 # Given a string s, return a string made of the first 2
 # and the last 2 chars of the original string,
