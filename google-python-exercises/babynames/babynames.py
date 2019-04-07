@@ -33,6 +33,17 @@ Suggested milestones for incremental development:
  -Build the [year, 'name rank', ... ] list and print it
  -Fix main() to use the extract_names list
 """
+def extract_rank (line):
+    # rank = something
+    return rank
+
+def extract_boy (line):
+    # boy = something
+    return boy
+
+def extract_girl (line):
+    # girl = something
+    return girl
 
 def extract_names(filename):
   """
@@ -42,7 +53,10 @@ def extract_names(filename):
   """
   input_file = open(filename, 'r')
   for line in input_file:
-      # somethong Here
+      rank = extract_rank (line)
+      boy = extract_boy (line)
+      girl = extract_girl (line)
+      # something here
 
   input_file.close()  # Not strictly required, but good form.
   return name_list
