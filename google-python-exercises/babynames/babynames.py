@@ -52,18 +52,30 @@ def extract_names(filename):
   followed by the name-rank strings in alphabetical order.
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
+# just to help up practicer through running file
+import os
+import re
 os.chdir("..")
 filename = "babynames/baby1990.html"
-input_file = open(filename, 'r')
-str = 'purple alice@google.com, blah monkey bob@abc.com blah dishwasher'
-  tuples = re.findall(r'([\w\.-]+)@([\w\.-]+)', input_file)
-  print tuples  ## [('alice', 'google.com'), ('bob', 'abc.com')]
-  for tuple in tuples:
-    print tuple[0]  ## username
-    print tuple[1]  ## host
+with open(filename, 'r') as file:
+    input_file = file.read().replace('\n', '')
+print input_file
+tuples = re.findall(r'<tr align="right"><td>([\d]+)</td><td>([\w-]+)</td><td>([\w-]+)', input_file)
+print tuples  ## [('alice', 'google.com'), ('bob', 'abc.com')]
+for tuple in tuples:
+    print tuple[0]  ## rank
+    print tuple[1]  ## boys
+    print tuple[2]  ## girls
 
-for line in input_file:
-  match = re.search(r'<tr align="right"><td>', line):
+ input_file = open(filename, 'r')
+ print input_file
+ #str = 'purple alice@google.com, blah monkey bob@abc.com blah dishwasher'
+ #str = '<tr align="right"><td>3</td><td>Matthew</td><td>Brittany</td>'
+ for line in input_file:
+   match = re.search(r'<tr align="right"><td>([\d]+)</td><td>([\w-]+)</td><td>([\w-]+)', line):
+   print match.group(1)
+   print match.group(2)
+   print match.group(3)
   if match = TRUE:
       rank = extract_rank (line)
       boy = extract_boy (line)
