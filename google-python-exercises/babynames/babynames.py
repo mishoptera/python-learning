@@ -45,22 +45,32 @@ import os
 import re
 os.chdir("..")
 filename = "babynames/baby1990.html"
+# open file as one big string to search
 with open(filename, 'r') as file:
     input_file = file.read().replace('\n', '')
+# get year
 year_line = re.search(r'Popularity in \d+', input_file)
 year = re.search(r'\d+', year_line.group())
-this_years_list = [year.group()]
-print this_years_list
+this_year = year.group()
+print this_year
+
+# extract all ranks/name data and get names into a "dict"
 tuples = re.findall(r'<tr align="right"><td>([\d]+)</td><td>([\w-]+)</td><td>([\w-]+)', input_file)
-print tuples[0]
-"""for tuple in tuples:
-    print tuple[0]  ## rank
-    print tuple[1]  ## boys
-    print tuple[2]  ## girls
-"""
- i
-  input_file.close()  # Not strictly required, but good form.
-  return name_list
+dict_girls = {}
+dict_boys = {}
+for tuple in tuples:
+    dict_girls[tuple[0]] = tuple[2]
+    dict_boys[tuple[0]] = tuple[1]
+
+
+# build the master name_list and return it
+name_list = [this_year]
+for year, name in dict_girls.items():
+    name_list.append(name + " " + year)
+for year, name in dict_boys.items():
+    name_list.append(name + " " + year)
+return sorted(name_list)
+
 
 
 def main():
