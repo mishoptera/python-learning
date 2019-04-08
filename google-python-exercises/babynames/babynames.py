@@ -8,6 +8,7 @@
 
 import sys
 import re
+import os
 
 """Baby Names exercise
 
@@ -34,15 +35,15 @@ Suggested milestones for incremental development:
  -Fix main() to use the extract_names list
 """
 def extract_rank (line):
-    # rank = something
+    # rank = re.search(r pattern, line)
     return rank
 
 def extract_boy (line):
-    # boy = something
+    # boy = re.search(r pattern, line)
     return boy
 
 def extract_girl (line):
-    # girl = something
+    # girl = re.search(r pattern, line)
     return girl
 
 def extract_names(filename):
@@ -51,8 +52,14 @@ def extract_names(filename):
   followed by the name-rank strings in alphabetical order.
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
-  input_file = open(filename, 'r')
-  for line in input_file:
+#print os.path.abspath(os.curdir)
+os.chdir("..")
+print os.path.abspath(os.curdir)
+filename = "babynames/baby1990.html"
+input_file = open(filename, 'r')
+for line in input_file:
+  match = re.search(r'<tr align="right"><td>', line):
+  if match = TRUE:
       rank = extract_rank (line)
       boy = extract_boy (line)
       girl = extract_girl (line)
