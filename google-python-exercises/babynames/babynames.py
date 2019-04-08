@@ -52,11 +52,16 @@ def extract_names(filename):
   followed by the name-rank strings in alphabetical order.
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
-#print os.path.abspath(os.curdir)
 os.chdir("..")
-print os.path.abspath(os.curdir)
 filename = "babynames/baby1990.html"
 input_file = open(filename, 'r')
+str = 'purple alice@google.com, blah monkey bob@abc.com blah dishwasher'
+  tuples = re.findall(r'([\w\.-]+)@([\w\.-]+)', input_file)
+  print tuples  ## [('alice', 'google.com'), ('bob', 'abc.com')]
+  for tuple in tuples:
+    print tuple[0]  ## username
+    print tuple[1]  ## host
+
 for line in input_file:
   match = re.search(r'<tr align="right"><td>', line):
   if match = TRUE:
