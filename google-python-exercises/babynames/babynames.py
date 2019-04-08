@@ -34,18 +34,6 @@ Suggested milestones for incremental development:
  -Build the [year, 'name rank', ... ] list and print it
  -Fix main() to use the extract_names list
 """
-def extract_rank (line):
-    # rank = re.search(r pattern, line)
-    return rank
-
-def extract_boy (line):
-    # boy = re.search(r pattern, line)
-    return boy
-
-def extract_girl (line):
-    # girl = re.search(r pattern, line)
-    return girl
-
 def extract_names(filename):
   """
   Given a file name for baby.html, returns a list starting with the year string
@@ -59,29 +47,18 @@ os.chdir("..")
 filename = "babynames/baby1990.html"
 with open(filename, 'r') as file:
     input_file = file.read().replace('\n', '')
-print input_file
+year_line = re.search(r'Popularity in \d+', input_file)
+year = re.search(r'\d+', year_line.group())
+this_years_list = [year.group()]
+print this_years_list
 tuples = re.findall(r'<tr align="right"><td>([\d]+)</td><td>([\w-]+)</td><td>([\w-]+)', input_file)
-print tuples  ## [('alice', 'google.com'), ('bob', 'abc.com')]
-for tuple in tuples:
+print tuples[0]
+"""for tuple in tuples:
     print tuple[0]  ## rank
     print tuple[1]  ## boys
     print tuple[2]  ## girls
-
- input_file = open(filename, 'r')
- print input_file
- #str = 'purple alice@google.com, blah monkey bob@abc.com blah dishwasher'
- #str = '<tr align="right"><td>3</td><td>Matthew</td><td>Brittany</td>'
- for line in input_file:
-   match = re.search(r'<tr align="right"><td>([\d]+)</td><td>([\w-]+)</td><td>([\w-]+)', line):
-   print match.group(1)
-   print match.group(2)
-   print match.group(3)
-  if match = TRUE:
-      rank = extract_rank (line)
-      boy = extract_boy (line)
-      girl = extract_girl (line)
-      # something here
-
+"""
+ i
   input_file.close()  # Not strictly required, but good form.
   return name_list
 
