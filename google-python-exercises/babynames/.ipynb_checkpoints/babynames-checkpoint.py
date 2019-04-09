@@ -34,43 +34,43 @@ Suggested milestones for incremental development:
  -Build the [year, 'name rank', ... ] list and print it
  -Fix main() to use the extract_names list
 """
-
 def extract_names(filename):
   """
   Given a file name for baby.html, returns a list starting with the year string
   followed by the name-rank strings in alphabetical order.
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
-"""
-just to help up practicer through running file
+# just to help up practicer through running file
 import os
 import re
 os.chdir("..")
 filename = "babynames/baby1990.html"
-"""
-    # open file as one big string to search
-    with open(filename, 'r') as file:
-        input_file = file.read().replace('\n', '')
-    # get year
-    year_line = re.search(r'Popularity in \d+', input_file)
-    year = re.search(r'\d+', year_line.group())
-    this_year = year.group()
+# open file as one big string to search
+with open(filename, 'r') as file:
+    input_file = file.read().replace('\n', '')
+# get year
+year_line = re.search(r'Popularity in \d+', input_file)
+year = re.search(r'\d+', year_line.group())
+this_year = year.group()
+print this_year
 
-    # extract all ranks/name data and get names into a "dict"
-    tuples = re.findall(r'<tr align="right"><td>([\d]+)</td><td>([\w-]+)</td><td>([\w-]+)', input_file)
-    dict_girls = {}
-    dict_boys = {}
-    for tuple in tuples:
-        dict_girls[tuple[0]] = tuple[2]
-        dict_boys[tuple[0]] = tuple[1]
+# extract all ranks/name data and get names into a "dict"
+tuples = re.findall(r'<tr align="right"><td>([\d]+)</td><td>([\w-]+)</td><td>([\w-]+)', input_file)
+dict_girls = {}
+dict_boys = {}
+for tuple in tuples:
+    dict_girls[tuple[0]] = tuple[2]
+    dict_boys[tuple[0]] = tuple[1]
 
-    # build the master name_list and return it
-    name_list = [this_year]
-    for year, name in dict_girls.items():
-        name_list.append(name + " " + year)
-    for year, name in dict_boys.items():
-        name_list.append(name + " " + year)
-    return sorted(name_list)
+
+# build the master name_list and return it
+name_list = [this_year]
+for year, name in dict_girls.items():
+    name_list.append(name + " " + year)
+for year, name in dict_boys.items():
+    name_list.append(name + " " + year)
+return sorted(name_list)
+
 
 
 def main():
@@ -92,20 +92,6 @@ def main():
   # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
-  for filename in args:
-    names = extract_names(filename)
-
-    # Make text out of the whole list
-    text = '\n'.join(names)
-
-    if summary:
-      outf = open(filename + '.summary', 'w')
-      outf.write(text + '\n')
-      outf.close()
-    else:
-      print text
-  # LAB(end solution)
-
 
 if __name__ == '__main__':
   main()
