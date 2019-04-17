@@ -10,7 +10,8 @@ import sys
 import re
 import os
 import shutil
-import commands
+# import commands
+# need to figure out replacement for import commands because this module is not supported in python 3
 
 """Copy Special exercise
 """
@@ -18,7 +19,7 @@ import commands
 def get_special_paths(dir):
     # -- returns a list of the absolute paths of the special files in the given directory
 
-def copy_to(paths, dir):
+def copy_to(paths, dire):
     # given a list of paths, copies those files into the given directory
 
 def zip_to(paths, zippath):
