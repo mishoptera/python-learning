@@ -63,17 +63,17 @@ def create_dict(filename):
 def print_words(filename):
     word_dict = create_dict(filename)
     for key in sorted(word_dict.keys()):
-        print "{} {}".format(key, word_dict[key])
+        print ("{} {}".format(key, word_dict[key]))
 
 
 def print_top(filename):
     word_dict = create_dict(filename)
     sorted_word_dict = sorted(word_dict.items(), key = operator.itemgetter(1), reverse = True)
     for word, count in sorted_word_dict[0:20]:  # limits to top 20
-        print word, count
+        print (word, count)
 
 print_words("basic/alice.txt")
-print "----"
+print ("----")
 print_top("basic/alice.txt")
 ###
 
