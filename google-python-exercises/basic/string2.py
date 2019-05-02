@@ -63,16 +63,18 @@ not_bad("That's not too damn bad.")
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    half_a = int(len(a)/2) - 1
-    half_b = int(len(b)/2) - 1
+    half_a = int(len(a)/2) + (len(a) % 2 > 0)
+    half_b = int(len(b)/2) + (len(b) % 2 > 0)
+    # above is cool trick to round up if uneven
 
     front_a = a[:half_a]
     front_b = b[:half_b]
-    back_a = a[(half_a + 1):]
-    back_b = b[(half_b + 1):]
+    back_a = a[(half_a):]
+    back_b = b[(half_b):]
     print(front_a, front_b, back_a, back_b)
 
-front_back("I loves you", "Sebastien Andre Christian Renaudin")
+front_back("abcdef", "123456")
+
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(got, expected):
