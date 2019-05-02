@@ -22,7 +22,7 @@ def verbing(s):
             s = s + "ing"
         else:
             s = s + "ly"
-    print s
+    print(s)
 
 verbing("dogs")
 verbing("Misha")
@@ -39,9 +39,21 @@ verbing("bouncing")
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-  # +++your code here+++
-  return
+    if s.find("not") == -1:
+        print(s)
+    elif s.find("bad") == -1:
+        print(s)
+    elif s.find("not") > s.find("bad"):
+        print(s)
+    else:
+        start = s.find("not")
+        finish = s.find("bad") + 3
+        string_to_replace = s[start:finish]
+        s = s.replace(string_to_replace, "good")
+        print(s)
 
+not_bad("That's so frickin bad.")
+not_bad("That's not too damn bad.")
 
 # F. front_back
 # Consider dividing a string into two halves.
