@@ -6,12 +6,10 @@
 # Google's Python Class
 # http://code.google.com/edu/languages/google-python-class/
 
-import sys
-import re
-import os
 
-"""Baby Names exercise
 
+"""
+Baby Names exercise
 Define the extract_names() function below and change main()
 to call it.
 
@@ -34,20 +32,24 @@ Suggested milestones for incremental development:
  -Build the [year, 'name rank', ... ] list and print it
  -Fix main() to use the extract_names list
 """
+import sys
+import re
+import os
 
-def extract_names(filename):
+def extrct_names(filename):
   """
   Given a file name for baby.html, returns a list starting with the year string
   followed by the name-rank strings in alphabetical order.
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
-"""
-just to help up practicer through running file
-import os
-import re
-os.chdir("..")
-filename = "babynames/baby1990.html"
-"""
+
+    """
+    just to help up practicer through running file
+    import os
+    import re
+    os.chdir("..")
+    filename = "babynames/baby1990.html"
+    """
     # open file as one big string to search
     with open(filename, 'r') as file:
         input_file = file.read().replace('\n', '')
@@ -80,7 +82,7 @@ def main():
   args = sys.argv[1:]
 
   if not args:
-    print 'usage: [--summaryfile] file [file ...]'
+    print('usage: [--summaryfile] file [file ...]')
     sys.exit(1)
 
   # Notice the summary flag and remove it from args if it is present.
@@ -103,7 +105,7 @@ def main():
       outf.write(text + '\n')
       outf.close()
     else:
-      print text
+      print(text)
   # LAB(end solution)
 
 
