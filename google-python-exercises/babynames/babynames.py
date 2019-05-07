@@ -42,36 +42,30 @@ def extrct_names(filename):
   followed by the name-rank strings in alphabetical order.
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
-# open file as one big string to search
-import re
-import os
-os.chdir("..")
-filename = "babynames/baby1990.html"
+    with open(filename, 'r') as file:
+        input_file = file.read().replace('\n', '')
+    # get year
+    year_line = re.search(r'Popularity in \d+', input_file)
+    year = re.search(r'\d+', year_line.group())
+    this_year = year.group()
 
-with open(filename, 'r') as file:
-    input_file = file.read().replace('\n', '')
-# get year
-year_line = re.search(r'Popularity in \d+', input_file)
-year = re.search(r'\d+', year_line.group())
-this_year = year.group()
+    # extract all ranks/name data and get names into a "dict"
+    tuples = re.findall(r'<tr align="right"><td>([\d]+)</td><td>([\w-]+)</td><td>([\w-]+)', input_file)
+    dict_girls = {}
+    dict_boys = {}
+    for tuple in tuples:
+        dict_girls[tuple[0]] = tuple[2]
+        dict_boys[tuple[0]] = tuple[1]
 
-# extract all ranks/name data and get names into a "dict"
-tuples = re.findall(r'<tr align="right"><td>([\d]+)</td><td>([\w-]+)</td><td>([\w-]+)', input_file)
-dict_girls = {}
-dict_boys = {}
-for tuple in tuples:
-    dict_girls[tuple[0]] = tuple[2]
-    dict_boys[tuple[0]] = tuple[1]
+    # build the master name_list and return it
+    name_list = [this_year]
+    for year, name in dict_girls.items():
+        name_list.append(name + " " + year)
+    for year, name in dict_boys.items():
+        name_list.append(name + " " + year)
+    print(sorted(name_list))
 
-# build the master name_list and return it
-name_list = [this_year]
-for year, name in dict_girls.items():
-    name_list.append(name + " " + year)
-for year, name in dict_boys.items():
-    name_list.append(name + " " + year)
-print(sorted(name_list))
-
-os.chdir("..")
+os.chdir("/Users/mleong/github/python-learning/google-python-exercises")
 filename = "babynames/baby1990.html"
 extract_names(filename)
 
